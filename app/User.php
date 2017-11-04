@@ -1,0 +1,72 @@
+<?php
+
+namespace App;
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'nickname','name', 'email', 'password','type','active','points'
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+     public function profile(){
+        return $this->hasOne(UserProfile::class)
+            ->withDefault([
+            'nickname'  => 'Gest'.rand(100,999)
+        ]);
+    }
+
+    public function getProfileAttribute(){
+        return $this->profile()->firstOrNew([]);
+    }
+    public static function getAdmin(){
+        return static::firstOrCreate([
+            'email' => 'hermann@berkhoff.cl',
+        ],[
+            'name'  => 'Hermann creado por firstOrCreate ',
+            'password'=> bcrypt('123456'),
+        ]);
+    }
+    Public static function filterAndPaginate($name,$type)
+    {
+        return User::name($name)
+            ->type($type)
+            ->orderBy('id')
+            ->paginate(15);
+    }
+    public function scopeName($query, $name)
+    {
+        if (trim($name) !="")
+        {
+            $query->where('name',"LIKE", "%$name%");
+        }
+    }
+
+    public function scopeType($query, $type)
+    {
+        $types = config('options.types');
+
+        if ($type != ""&& isset($types[$type]))
+        {
+            $query->where('type',$type);
+        }
+    }
+}
