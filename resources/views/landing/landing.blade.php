@@ -8,7 +8,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Adminlte-laravel - {{ trans('message.landingdescription') }} ">
     <meta property="og:description" content="Adminlte-laravel - {{ trans('message.landingdescription') }}" />
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('message.landingdescriptionpratt') }}</title>
 
     <!-- Custom styles for this template -->
@@ -27,7 +27,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
 <body data-spy="scroll" data-offset="0" data-target="#navigation">
 
-<div id="app">
+<div>
     <!-- Fixed navbar -->
     <div id="navigation" class="navbar navbar-default navbar-fixed-top">
         <div class="container">

@@ -15,11 +15,11 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
+    public function handle($request, Closure $next, $guard = null){
+      /*lo comente para que me muestre la pantalla de registro y no me rediriga al home
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
-        }
+        }*/
 
         return $next($request);
     }

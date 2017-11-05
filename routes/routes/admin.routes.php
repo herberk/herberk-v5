@@ -23,3 +23,6 @@ Route::group(['middleware' =>'auth'], function(){
     route::get('profile/{user}', 'ProfileController@show');
 
  });
+
+Route::get('passchange',[ 'uses' => 'ProfileController@getPassword','as' => 'passchange']);
+Route::post('postpasschange',['uses' => 'ProfileController@postPassword','as' => 'postpasschange']);

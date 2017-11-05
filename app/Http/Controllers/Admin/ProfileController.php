@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Notifications\ProfileUpdated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use App\Http\Controllers\Controller;
@@ -140,5 +141,34 @@ class ProfileController extends Controller
             null, $headers, ResponseHeaderBag::DISPOSITION_INLINE
 
         );
+    }
+    public function getPassword()
+    {
+
+        return view('admin/users/passchange');
+    }
+
+    public function postPassword(Request $request)
+    {
+        $user = $request->user();
+
+        if(!Hash::check($request->get('current_password'), $user->password))
+        {
+            return redirect()->back()->withErrors([
+                'current_password' => 'La contrasena actual no es valida'
+            ]);
+        }
+
+        $this->validate($request, [
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        \Alert::message('Su contrasena fue cambiada', 'success');
+        return redirect('/usuario');
+
+        // ->with('alert', 'Su contrasena fue cambiada');
     }
 }

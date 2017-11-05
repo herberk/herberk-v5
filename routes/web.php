@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::group([ 'namespace' => 'nav'], function () {
     require __DIR__ . '/routes/navbar.routes.php';
 });

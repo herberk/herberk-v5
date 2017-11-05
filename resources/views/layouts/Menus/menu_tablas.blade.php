@@ -3,15 +3,16 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <h3 class="text-center">Usuarios</h3>
-                <li><a href="{{ url('/users') }}"><i class="fa fa-users fa-fw" aria-hidden="true">
-                        </i> Lista de usuarios</a></li>
-                <li><a href="{{url('passchange')}}"><i class="fa fa-key fa-fw" aria-hidden="true">
-                        </i> Cambio de clave</a></li>
-                <li><a href="{{ url('/profile') }}"><i class="fa fa-user fa-fw" aria-hidden="true">
-                        </i> Editar Perfil</a></li>
+                <h3 class="text-center">Tablas maestros</h3>
+               <li><a  href="{{ url('#') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true">
+                       </i> Regiones</a></li>
+                <li><a  href="{{ url('#') }}"><i class="fa fa-id-card-o fa-fw" aria-hidden="true">
+                        </i>&nbsp;Comunas</a></li>
+                <li><a href="{{url('#')}}"><i class="fa fa-address-book-o" aria-hidden="true">
+                        </i> Ciudades</a></li>
+                 <li><a href="{{ url('/giros') }}"><i class="fa fa-address-book" aria-hidden="true">
+                         </i> Giros</a></li>
             </ul>
-
         </div>
     </div>
 </div>

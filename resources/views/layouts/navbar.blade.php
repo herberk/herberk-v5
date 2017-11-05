@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+    <div class="container" id="app">
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -28,7 +28,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="{{ url('/home') }}">Escritorio</a></li>
                         <li><a href="{{ url('/prueba') }}">Prueba</a></li>
-                        <li><a href="#">Tablas</a></li>
+                        <li><a href="{{ url('/tablas') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true"></i> Tablas</a></li>
                         <li><a href="{{ url('/usuario') }}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Usuario</a></li>
 
                         <li><a href="#">Help</a></li>
@@ -46,6 +46,7 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                 {{ Auth::user()->name }} <span class="caret"></span>
+                                <img src="{{ url('profile/avatar')  }}" width="25" height="23" class="img-circle" alt="User Image"/>
                             </a>
 
                             <ul class="dropdown-menu">
