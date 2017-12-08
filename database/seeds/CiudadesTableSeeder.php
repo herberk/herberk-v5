@@ -11,21 +11,15 @@ class CiudadesTableSeeder extends Seeder
      */
     public function run()
     {
-        //delete  table records
         \DB::table('ciudades')->delete();
 
         \DB::table('ciudades')->insert(array(
-            array('id' => '1','name' => 'Temuco','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '2','name' => 'Pucon','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '3','name' => 'Villarica','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '4','name' => 'Victoria','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '5','name' => 'Valparaiso','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '6','name' => 'Rancagua ','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '7','name' => 'Curico','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39'),
-            array('id' => '8','name' => 'Concepcion','created_at' => '2017-05-22 20:10:39','updated_at' => '2017-05-22 20:10:39')
-
+            array('id' => '1','name' => 'Villarrica','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
+            array('id' => '2','name' => 'Temuco','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
+            array('id' => '3','name' => 'Puco','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
+            array('id' => '4','name' => 'Angol','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
+            array('id' => '5','name' => 'Victoria','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
+            array('id' => '6','name' => 'Santiago','nro' =>'0','created_at' => '2017-08-22 20:10:39','updated_at' => '2017-08-22 20:10:39'),
         ));
-
-
     }
 }

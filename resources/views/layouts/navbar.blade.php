@@ -1,5 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container" id="app">
+    <div class="container">
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -15,26 +15,18 @@
                 {{ config('app.name', 'Laravel') }}
             </a>
         </div>
-
-
-
-
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Lado izquierdo de Navbar -->
             @if (Auth::guest())
-
                 <!-- Menus se ven si estar logeado -->
-        @else
+           @else
                     <ul class="nav navbar-nav">
-                        <li><a href="{{ url('/home') }}">Escritorio</a></li>
-                        <li><a href="{{ url('/prueba') }}">Prueba</a></li>
+                        <li><a href="{{ url('/home') }}"> Escritorio</a></li>
+                        <li><a href="{{ url('/prueba') }}"> Prueba</a></li>
                         <li><a href="{{ url('/tablas') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true"></i> Tablas</a></li>
                         <li><a href="{{ url('/usuario') }}"><i class="fa fa-user fa-fw" aria-hidden="true"></i> Usuario</a></li>
-
                         <li><a href="#">Help</a></li>
                     </ul>
-
-
         @endif
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">

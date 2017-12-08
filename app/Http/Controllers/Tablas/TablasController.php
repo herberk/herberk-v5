@@ -1,29 +1,56 @@
 <?php
 namespace App\Http\Controllers\Tablas;
 
-use App\Http\Requests\StoreCiudadRecuest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Tablas\giros;
-use App\Tablas\ciudades;
-use App\Tablas\Comunas;
-use App\Tablas\Regiones;
-use Maatwebsite\Excel\Facades\Excel;
+use App\Tablas\Ciudades;
+use App\Http\Requests\StoreCiudad;
+use App\Http\Requests\Updateciudad;
 use Illuminate\Support\Facades\Session;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TablasController extends Controller
 {
-    public function locaciones(){
-        $regiones = regiones::orderBY('name')->paginate(15);
-        $comunas = comunas::orderBY('name')->paginate(15);
-        $ciudades = ciudades::orderBY('name')->paginate(15);
-        return view('tablas.locaciones',compact( 'regiones', 'comunas', 'ciudades'));
+
+    public function ciudadQuery(Request $request){
+
+        $ciudades = Ciudades::orderBY('name')->paginate(10);
+     return [
+         'pagination' => [
+             'total'         => $ciudades->total(),
+             'current_page'  => $ciudades->currentPage(),
+             'per_page'      => $ciudades->perPage(),
+             'last_page'     => $ciudades->lastPage(),
+             'from'          => $ciudades->firstItem(),
+             'to'            => $ciudades->lastItem(),
+         ],
+         'ciudades' => $ciudades
+     ];
+
     }
-
-
+        //StoreCiudad
+     public function create(Request $request){
+        $ciudades=new Ciudades();
+        $ciudades->name=$request->name;
+        $ciudades->codigo =$request->codigo;
+        $ciudades->save();
+    }
+    public function delete($id)
+    {
+        Ciudades::find($id)->delete();
+    }
+     //Updateciudad
+    public function update(Request $request)
+    {
+        $ciudades = Ciudades::find($request->id);
+        $ciudades->name = $request->name;
+        $ciudades->codigo =$request->codigo;
+        $ciudades->save();
+    }
     public function giros(Request $request){
         $giros = Giros::filterAndPaginate($request->get('name'),  $request->get('type'), $request->get('codigo'));
-         return view('tablas.giros',compact( 'giros'));
+        return view('tablas.giros',compact( 'giros'));
     }
 
     public function bexcel(Request $request){
@@ -34,87 +61,5 @@ class TablasController extends Controller
             });
         })->download('xls');
     }
-
-    /*ciuda */
-    public function createciudad()
-    {
-        return view('tablas.storeciudad');
-    }
-
-    public function storeciudad(StoreCiudadRecuest $request)
-    {
-        ciudades::create($request->all());
-        \Alert::message('La ciudad fue guardada');
-        return back()->withInput();
-        //return redirect()->route('locaciones');
-    }
-
-    /*glosa*/
-    public function createglosas()
-    {
-        return view('tablas.storeglosas');
-    }
-
-    public function storeglosas(StoreGlosasRecuest $request)
-    {
-        ciudades::create($request->all());
-        \Alert::message('La glosas fue guardada');
-        return back()->withInput();
-    }
-    /*desglosas*/
-    public function createdesglosas()
-    {
-        return view('tablas.storedesglosas');
-    }
-
-    public function storedesglosas(StoreDesglosasRecuest $request)
-    {
-        ciudades::create($request->all());
-        \Alert::message('El Tipo de glosa fue guardada');
-        return back()->withInput();
-    }
-
-
-
-    public function glosas()
-    {
-        return view('tablas.glosas', compact('makeForm'));
-    }
-    public function destroy($id, Request $request)
-    {
-            dd('hola');
-           // abort(500);
-        $ciudades = ciudades::findOrFail($id);
-        $ciudades->delete();
-        $message = $ciudades->name. ' Fue eliminado de nuestros registros';
-        if ($request->ajax()) {
-            return response()->json([
-                'id'      => $user->id,
-                'message' => $message
-            ]);
-        }
-        Session::flash('message', $message);
-        return redirect()->route('locaciones');
-    }
-
-
-
-    //*** parece que de aqui adelate nada
-
-
-    public function index_reg_com()
-    {
-        $regiones = regiones::orderBY('name')->paginate(15);
-        $comunas = comunas::orderBY('name')->paginate(15);
-        $ciudades = ciudades::orderBY('name')->paginate(15);
-
-        return view('tablas.listaloca', compact('regiones','comunas','ciudades'));
-    }
-
-    public function index_modal()
-    {
-        return view('tablas.modal');
-    }
-
 
 }

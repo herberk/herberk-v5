@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <h3 class="text-center">Usuarios</h3>
+                <h3 class="text-center" style= "color: #108cfa">Usuarios</h3>
                 <li><a href="{{ url('/users') }}"><i class="fa fa-users fa-fw" aria-hidden="true">
                         </i> Lista de usuarios</a></li>
                 <li><a href="{{url('passchange')}}"><i class="fa fa-key fa-fw" aria-hidden="true">

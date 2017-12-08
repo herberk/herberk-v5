@@ -16,20 +16,20 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
     @yield('style')
 </head>
 <body>
-
-        @include('layouts.navbar')
-
-        @yield('content')
-
-
+    <div class="app">
+      @include('layouts.navbar')
+      @yield('content')
+    </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-
-    @yield('script')
-
+   @yield('script')
 </body>
 </html>

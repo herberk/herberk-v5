@@ -3,15 +3,16 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <h3 class="text-center">Tablas maestros</h3>
-               <li><a  href="{{ url('#') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true">
-                       </i> Regiones</a></li>
-                <li><a  href="{{ url('#') }}"><i class="fa fa-id-card-o fa-fw" aria-hidden="true">
-                        </i>&nbsp;Comunas</a></li>
-                <li><a href="{{url('#')}}"><i class="fa fa-address-book-o" aria-hidden="true">
-                        </i> Ciudades</a></li>
+                <h3 class="text-center" style= "color: #108cfa">Tablas maestros</h3>
+
+                <li><a href="{{ url('/locaciones') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true">
+                        </i> Regiones comunas</a></li>
+                <li><a href="{{ url('/ciudades') }}"><i class="fa fa-address-card fa-fw" aria-hidden="true">
+                        </i> ciudades</a></li>
                  <li><a href="{{ url('/giros') }}"><i class="fa fa-address-book" aria-hidden="true">
                          </i> Giros</a></li>
+                <li><a  href="{{ url('/Tipo_atributo') }}"> <i class="fa fa-address-card fa-fw" aria-hidden="true">
+                       </i> Tipo atributos</a></li>
             </ul>
         </div>
     </div>

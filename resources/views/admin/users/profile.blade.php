@@ -43,7 +43,7 @@
                             <div class="form-group{{ $errors->has('nickname') ? ' has-error' : '' }}">
                                 <label for="nickname" class="col-md-4 control-label">Nombre Corto</label>
                                 <div class="col-md-6">
-                                    <input id="nickname" type="text" class="form-control" name="nickname" value="{{old("nickname", $user->nickname)}}" required>
+                                    <input id="nickname" type="text" class="form-control" name="nickname" value="{{old("nickname", $user->nickname)}}" >
                                     @if ($errors->has('nickname'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('nickname') }}</strong>

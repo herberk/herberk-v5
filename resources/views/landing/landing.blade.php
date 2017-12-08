@@ -6,7 +6,6 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adminlte-laravel - {{ trans('message.landingdescription') }} ">
     <meta property="og:description" content="Adminlte-laravel - {{ trans('message.landingdescription') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ trans('message.landingdescriptionpratt') }}</title>
@@ -19,7 +18,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
     <style>
         #map {
-            height: 600px;
+            height: 610px;
             width: 100%;
         }
     </style>
@@ -42,10 +41,9 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="#home" class="smoothScroll">{{ trans('message.home') }}</a></li>
-                    <li><a href="#desc" class="smoothScroll">{{ trans('message.description') }}</a></li>
+                    <li><a href="#desc" class="smoothScroll">{{ trans('message.description') }}</a></li >
                     <li><a href="#showcase" class="smoothScroll">{{ trans('message.showcase') }}</a></li>
                     <li><a href="#contact" class="smoothScroll">{{ trans('message.contact') }}</a></li>
-                    <li><a href="#map" class="smoothScroll">{{ trans('message.map') }}</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if (Auth::guest())
@@ -59,8 +57,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         </div>
     </div>
 
-
-    <section id="home" name="home"></section>
+<section id="home" name="home"></section>
     <div id="headerwrap">
         <div class="container">
             <div class="row centered">
@@ -90,34 +87,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     </div><!--/ #headerwrap -->
 
 
-    <section id="desc" name="desc"></section>
-    <!-- INTRO WRAP
-    <div id="intro">
-        <div class="container">
-            <div class="row centered">
-                <h1>{{ trans('message.designed') }}</h1>
-                <br>
-                <br>
-                <div class="col-lg-4">
-                    <img src="{{ asset('/img/intro01.png') }}" alt="">
-                    <h3>{{ trans('message.community') }}</h3>
-                    <p>{{ trans('message.see') }} <a href="https://github.com/acacha/adminlte-laravel">{{ trans('message.githubproject') }}</a>, {{ trans('message.post') }} <a href="https://github.com/acacha/adminlte-laravel/issues">{{ trans('message.issues') }}</a> {{ trans('message.and') }} <a href="https://github.com/acacha/adminlte-laravel/pulls">{{ trans('message.pullrequests') }}</a></p>
-                </div>
-                <div class="col-lg-4">
-                    <img src="{{ asset('/img/intro02.png') }}" alt="">
-                    <h3>{{ trans('message.schedule') }}</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>
-                <div class="col-lg-4">
-                    <img src="{{ asset('/img/intro03.png') }}" alt="">
-                    <h3>{{ trans('message.monitoring') }}</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                </div>
-            </div>
-            <br>
-            <hr>
-        </div> <!--/ .container
-    </div> -->  <!--/ #introwrap -->
+<section id="desc" name="desc"></section>
 
     <!-- FEATURES WRAP -->
     <div id="features">
@@ -197,7 +167,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     </div><!--/ #features -->
 
 
-    <section id="showcase" name="showcase"></section>
+ <section id="showcase" name="showcase"></section>
     <div id="showcase">
         <div class="container">
             <div class="row">
@@ -234,12 +204,14 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     </div>
 
 
-    <section id="contact" name="contact"></section>
+ <section id="contact" name="contact"></section>
     <div id="footerwrap">
-        <div class="container">
-            <div class="col-lg-5">
+        <br>
+        <div class="row">
+
+            <div class="col-lg-2 text-center">
                 <h3>{{ trans('message.address') }}</h3>
-                <p>
+                <p class="lead ">
                     Diego Portales 1383,<br/>
                     Temuco,<br/>
                     Mov. 87695505<br/>
@@ -248,7 +220,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                 </p>
             </div>
 
-            <div class="col-lg-7">
+            <div class="col-lg-3">
                 <h3>{{ trans('message.dropus') }}</h3>
                 <br>
                 <form role="form" action="send" method="post" enctype="plain">
@@ -268,47 +240,31 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
                     <button type="submit" class="btn btn-large btn-success">{{ trans('message.submit') }}</button>
                 </form>
             </div>
-        </div>
-<br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-   <section id="map" name="contact"></section>
-     <div id="footerwrap">
-      <div class="container">
-        <div class="col-lg-12">
-            <h3>Mapa de Chile, Region de la Araucania -> Temuco</h3>
+               <div class="col-lg-6">
+                    <h3>Mapa de Chile, Region de la Araucania -> Temuco</h3>
 
-            <div id="map"></div>
+                    <div id="map"></div>
 
-            <script>
-                function initMap() {
-                    var uluru = {lat: -38.735902, lng: -72.590374};
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 6,
-                        center: uluru
-                    });
-                    var marker = new google.maps.Marker({
-                        position: uluru,
-                        map: map
-                    });
-                }
-            </script>
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVkX45aEX3xiWRq0WuE9LOyN5cg0iT8oU&callback=initMap">
-            </script>
-        </div>
+                    <script>
+                        function initMap() {
+                            var uluru = {lat: -38.735902, lng: -72.590374};
+                            var map = new google.maps.Map(document.getElementById('map'), {
+                                zoom: 6,
+                                center: uluru
+                            });
+                            var marker = new google.maps.Marker({
+                                position: uluru,
+                                map: map
+                            });
+                        }
+                    </script>
+                    <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVkX45aEX3xiWRq0WuE9LOyN5cg0iT8oU&callback=initMap">
+                    </script>
+                </div>
+
+         </div>
     </div>
- </div>
-</div>
-
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
